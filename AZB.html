@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dienstzeit</title>
+<meta name="description" content="Arbeitszeiterfassung für Lehrkräfte an berufsbildenden Schulen in Rheinland-Pfalz. Alle Daten bleiben auf dem eigenen Gerät.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dienstzeit">
+<meta name="referrer" content="no-referrer">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAD3klEQVR42u3dzU0eMRCAYRjRBYdwTxWpJNyDlAJSBVIKSAupgFZySR855EbQl12+/Zmf5z0iJMbjd8deY69vP3z+cgO8RUgByAFygBwgB8gBcoAcIAfIAXIA5AA5QA6QA+QAOUAOkAPkADkAcoAcIAfIAXKAHCAHyAFygBwAOUAOkAPkADlADuTkbmzLf/34vvyXHx6fBqbods6nJlfZwJURcmzoxDRL2sqxqxNDLOkmx8FO9Lakjxyna9FPkQ5ypNKikyLBjJmxNa8chVJftIQEM0Tbp3Icv5Y1dvWsmBxX9tMmfZMhBnJs1is79Ue2eObK8b6eOKAb0gY2Qo53ZP+U1FeJs48cazN+errLBVz1VbZiotfGkPktt8lmn1TP399gqi+Ppq4cy5ObszIvjyqtRsEMflSakC7M1FZaXPhzB/yJzKLHcDNSlZBs9SNMP8VcQ44lj07dHTRLIk9VPIIZ/HDiDWXlmFA2yhWPYAY/ag8r/Y4MlWhR2F95Y+dp3crR9Txq/nZF8oej90nl/7bu3OLhVRY15ZjwGQw7wUxFS2bJsIKCcsz5DFfaloYxxchSrHJM+3pfzvaacyCZHMaUEhkLNVarDSsgB8iBnnKYjVbJW5iXabth5T2P4/AiF8wwCJID5Nhhfje2eKgcIAfIsRPP9y/P9y/kAEXGy7F8xennt4+vFCEHppeQ0XIsKR6vysYoRaZXjst+XDBjwigT/vf48Pj0ryJv/nDvEpJtte2c75BezkK2f06u6vivvz+1SYsJ6cb93WkiQo6lfqxVhBwU6VxCwn64/UaZVcUmYavDfrgDRpmiGTOs7KXIwfa4b6WMImvNyNnesNP6+NfdKrkKxzQ2LyE9yoY5R7ESMkiOyeeXSmQpHADURsMKqsmR/PvOw7/uHQqvduWVw7Q0bWbCQ6ZFqeUod6fmkGvLwrVnzPAqi8pyTCgete7BDHdqMqPVsFLRj4oxV/2aYK1cL4w225LPOYeaNuz75GtopRtS/r6VzCWkuuIdrvHK6UeD4nd302jNMUmW2yzmtrpXNkOvrI0h85wp6YT0yi4/JeNV4mwlxzVV4YDspw1skBzXjBo79US2eEbLcf2sYpNeyRADOXafdR6/Gltr21s9OYq+LlbcDRn2V4q2W+WoUkJKb58OW7SZ0bZy5CwhPc5b9JEjiSKdjuF0k+MsS1oezWorxzGW9D6u118Oa1nk2NeVmQd658qBGyfeQA6QA+QAOUAOkAPkADlADikAOUAOkAPkADlADpAD5AA5QA6AHCAHyAFygBwgB8gBcoAcIAdADpAD5AA5QA6QA7n5AwGbw26qQxc2AAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAD3klEQVR42u3dzU0eMRCAYRjRBYdwTxWpJNyDlAJSBVIKSAupgFZySR855EbQl12+/Zmf5z0iJMbjd8deY69vP3z+cgO8RUgByAFygBwgB8gBcoAcIAfIAXIA5AA5QA6QA+QAOUAOkAPkADkAcoAcIAfIAXKAHCAHyAFygBwAOUAOkAPkADlADuTkbmzLf/34vvyXHx6fBqbods6nJlfZwJURcmzoxDRL2sqxqxNDLOkmx8FO9Lakjxyna9FPkQ5ypNKikyLBjJmxNa8chVJftIQEM0Tbp3Icv5Y1dvWsmBxX9tMmfZMhBnJs1is79Ue2eObK8b6eOKAb0gY2Qo53ZP+U1FeJs48cazN+errLBVz1VbZiotfGkPktt8lmn1TP399gqi+Ppq4cy5ObszIvjyqtRsEMflSakC7M1FZaXPhzB/yJzKLHcDNSlZBs9SNMP8VcQ44lj07dHTRLIk9VPIIZ/HDiDWXlmFA2yhWPYAY/ag8r/Y4MlWhR2F95Y+dp3crR9Txq/nZF8oej90nl/7bu3OLhVRY15ZjwGQw7wUxFS2bJsIKCcsz5DFfaloYxxchSrHJM+3pfzvaacyCZHMaUEhkLNVarDSsgB8iBnnKYjVbJW5iXabth5T2P4/AiF8wwCJID5Nhhfje2eKgcIAfIsRPP9y/P9y/kAEXGy7F8xennt4+vFCEHppeQ0XIsKR6vysYoRaZXjst+XDBjwigT/vf48Pj0ryJv/nDvEpJtte2c75BezkK2f06u6vivvz+1SYsJ6cb93WkiQo6lfqxVhBwU6VxCwn64/UaZVcUmYavDfrgDRpmiGTOs7KXIwfa4b6WMImvNyNnesNP6+NfdKrkKxzQ2LyE9yoY5R7ESMkiOyeeXSmQpHADURsMKqsmR/PvOw7/uHQqvduWVw7Q0bWbCQ6ZFqeUod6fmkGvLwrVnzPAqi8pyTCgete7BDHdqMqPVsFLRj4oxV/2aYK1cL4w225LPOYeaNuz75GtopRtS/r6VzCWkuuIdrvHK6UeD4nd302jNMUmW2yzmtrpXNkOvrI0h85wp6YT0yi4/JeNV4mwlxzVV4YDspw1skBzXjBo79US2eEbLcf2sYpNeyRADOXafdR6/Gltr21s9OYq+LlbcDRn2V4q2W+WoUkJKb58OW7SZ0bZy5CwhPc5b9JEjiSKdjuF0k+MsS1oezWorxzGW9D6u118Oa1nk2NeVmQd658qBGyfeQA6QA+QAOUAOkAPkADlADikAOUAOkAPkADlADpAD5AA5QA6AHCAHyAFygBwgB8gBcoAcIAdADpAD5AA5QA6QA7n5AwGbw26qQxc2AAAAAElFTkSuQmCC">
+<style>
+/* Layout: eine schmale Spalte; Stoppuhr, Wochenstand, Reiter fuer Auswertung, Eintraege, Einstellungen. Nur Systemschriften, keine Anfragen ins Netz. */
+:root{
+  --bg:#f3f4f2; --surface:#ffffff; --ink:#1c2422; --muted:#5d6865; --line:#d9dedb;
+  --accent:#1f5f6b; --accent-ink:#ffffff; --accent-soft:#dbe9eb; --teach:#b07a2a;
+  --good:#2e7d4f; --warn:#b4541f;
+  --f-display:"Avenir Next Condensed","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
+  --f-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#121716; --surface:#1b2221; --ink:#e7ecea; --muted:#9aa6a3; --line:#2e3836;
+  --accent:#6fb3bf; --accent-ink:#0d1716; --accent-soft:#1f3438; --teach:#d9a75a;
+  --good:#6cc492; --warn:#ef9a6a; color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45}
+[hidden]{display:none!important}
+.wrap{max-width:560px;margin:0 auto;padding-top:max(20px,env(safe-area-inset-top,0px));padding-bottom:max(48px,env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px}
+h1{font-family:var(--f-display);font-weight:800;font-size:1.6rem;letter-spacing:.01em;margin:0}
+h2{font-family:var(--f-display);font-weight:700;font-size:1.1rem;margin:0}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sub-top{font-size:.8rem;color:var(--muted)}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.clock .state{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.clock .time{font-family:var(--f-mono);font-size:clamp(2.6rem,13vw,3.6rem);line-height:1;letter-spacing:-.02em}
+.clock .sub{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.big{appearance:none;-webkit-appearance:none;border:0;border-radius:12px;padding:16px;font:700 1.15rem var(--f-display);letter-spacing:.03em;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.big.stop{background:var(--warn);color:var(--surface)}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.week{display:flex;flex-direction:column;gap:8px}
+.weekhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.bar{position:relative;height:14px;background:var(--accent-soft);border-radius:7px;overflow:hidden}
+.bar .fill{position:absolute;top:0;bottom:0;left:0;background:var(--accent);border-radius:7px}
+.bar .mark{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--teach)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{appearance:none;-webkit-appearance:none;background:none;border:0;border-bottom:3px solid transparent;padding:10px 12px;font:600 .95rem var(--f-body);color:var(--muted);cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.panel{display:flex;flex-direction:column;gap:14px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat b{font-family:var(--f-mono);font-weight:500;font-size:1.25rem}
+.stat span{font-size:.82rem;color:var(--muted)}
+.rows{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:6rem minmax(0,1fr) 4.4rem;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.row .lbl{color:var(--muted)}
+.row .val{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.minibar{position:relative;height:8px;background:var(--accent-soft);border-radius:4px}
+.minibar .fill{position:absolute;top:0;bottom:0;left:0;background:var(--accent);border-radius:4px}
+.minibar .mark{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.5}
+.entry{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.entry .when{display:flex;flex-direction:column;min-width:0}
+.entry .when small{color:var(--muted)}
+.linkbtn{appearance:none;-webkit-appearance:none;background:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font:600 .85rem var(--f-body);color:var(--accent);cursor:pointer}
+form,.card{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:0}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fields.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+label{display:flex;flex-direction:column;gap:4px;font-size:.82rem;color:var(--muted);min-width:0}
+input{font:500 1rem var(--f-mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 8px;width:100%;min-width:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{appearance:none;-webkit-appearance:none;border:0;border-radius:9px;padding:10px 16px;font:600 .95rem var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.danger{background:transparent;color:var(--warn);border:1px solid var(--warn)}
+.msg{font-size:.88rem;min-height:1.2em}
+.msg.err{color:var(--warn)} .msg.ok{color:var(--good)}
+.note{font-size:.88rem;color:var(--muted);max-width:65ch}
+.note p{margin:0 0 8px}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:.92rem}
+.calc div{display:flex;justify-content:space-between;gap:10px}
+.calc div b{font-family:var(--f-mono);font-weight:500;white-space:nowrap}
+.empty{color:var(--muted);font-size:.92rem;padding:8px 0}
+.banner{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:.9rem}
+.pos{color:var(--good)} .neg{color:var(--warn)}
+a{color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){.bar .fill,.minibar .fill{transition:width .4s ease}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>Dienstzeit</h1>
+    <span class="sub-top">Lehrkräfte BBS · RLP</span>
+  </div>
+
+  <div class="banner" id="banner" hidden></div>
+
+  <section class="clock" aria-label="Stoppuhr">
+    <span class="state" id="state">Gestoppt</span>
+    <span class="time" id="time">0:00:00</span>
+    <div class="sub"><span>Heute <b class="num" id="today">0:00</b> h</span><span id="since"></span></div>
+    <button class="big" id="toggle" type="button">Start</button>
+  </section>
+
+  <section class="week" aria-label="Diese Woche">
+    <div class="weekhead"><h2 id="weekTitle">Diese Woche</h2><span class="num" id="weekVal"></span></div>
+    <div class="bar"><div class="fill" id="weekFill" style="width:0"></div><div class="mark" id="weekMark"></div></div>
+    <div class="legend"><span><i style="background:var(--accent)"></i>erfasst</span><span><i style="background:var(--teach)"></i><span id="teachLbl"></span></span><span>Balkenende = Soll je Schulwoche</span></div>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" type="button" aria-selected="true" data-p="auswertung">Auswertung</button>
+    <button role="tab" type="button" aria-selected="false" data-p="eintraege">Einträge</button>
+    <button role="tab" type="button" aria-selected="false" data-p="einstellungen">Einstellungen</button>
+  </nav>
+
+  <section class="panel" id="p-auswertung">
+    <div class="stats">
+      <div class="stat"><b id="sAvgWork">–</b><span>Ø je Woche mit Einträgen</span></div>
+      <div class="stat"><b id="sAvgCal">–</b><span>Ø je Kalenderwoche seit Beginn</span></div>
+      <div class="stat"><b id="sTotal">–</b><span>Summe seit Beginn</span></div>
+      <div class="stat"><b id="sSaldo">–</b><span>Saldo zum anteiligen Jahressoll</span></div>
+    </div>
+    <h2>Wochen</h2>
+    <div class="rows" id="weeks"></div>
+    <h2>Monate</h2>
+    <div class="rows" id="months"></div>
+  </section>
+
+  <section class="panel" id="p-eintraege" hidden>
+    <form id="entryForm" novalidate>
+      <h2 id="formTitle">Zeit nachtragen</h2>
+      <div class="fields">
+        <label for="fDate">Datum<input type="date" id="fDate"></label>
+        <label for="fFrom">Von<input type="time" id="fFrom"></label>
+        <label for="fTo">Bis<input type="time" id="fTo"></label>
+      </div>
+      <div class="actions">
+        <button class="btn" type="submit" id="fSave">Eintragen</button>
+        <button class="btn ghost" type="button" id="fCancel" hidden>Abbrechen</button>
+        <button class="btn danger" type="button" id="fDelete" hidden>Löschen</button>
+      </div>
+      <div class="msg" id="fMsg" role="status"></div>
+    </form>
+    <h2>Letzte Einträge</h2>
+    <div id="entries"></div>
+  </section>
+
+  <section class="panel" id="p-einstellungen" hidden>
+    <div class="calc" id="calc"></div>
+    <form id="setForm" novalidate>
+      <h2>Sollwerte</h2>
+      <div class="fields two">
+        <label for="sUmfang">Beschäftigungsumfang in %<input type="number" id="sUmfang" min="1" max="100" step="0.1" inputmode="decimal"></label>
+        <label for="sDeputat">Unterrichtsstunden laut Plan<input type="number" id="sDeputat" min="0" step="0.5" inputmode="decimal"></label>
+        <label for="sJahr">Jahressoll Vollzeit in Stunden<input type="number" id="sJahr" min="0" step="1" inputmode="numeric"></label>
+        <label for="sWochen">Schulwochen im Schuljahr<input type="number" id="sWochen" min="1" step="0.1" inputmode="decimal"></label>
+        <label for="sStart">Bilanz ab<input type="date" id="sStart"></label>
+      </div>
+      <div class="actions"><button class="btn" type="submit">Speichern</button><button class="btn ghost" type="button" id="sReset">RLP-Standard</button></div>
+      <div class="msg" id="sMsg" role="status"></div>
+    </form>
+
+    <div class="card">
+      <h2>Sichern und übertragen</h2>
+      <p class="note" style="margin:0">Die Zeiten liegen nur in diesem Browser auf diesem Gerät. Sichere sie regelmäßig als Datei, zum Beispiel vor einem Handywechsel. Mit „Sicherung laden“ übernimmst du sie auf einem anderen Gerät; vorhandene Einträge werden dabei ersetzt.</p>
+      <div class="actions">
+        <button class="btn" type="button" id="exportBtn">Sicherung speichern</button>
+        <button class="btn ghost" type="button" id="importBtn">Sicherung laden</button>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+      <div class="msg" id="bMsg" role="status"></div>
+    </div>
+
+    <div class="note">
+      <p><b>Rechtsgrundlage.</b> Regelstundenmaß an berufsbildenden Schulen in RLP: 24 Wochenstunden zu 45 Minuten (§ 3 Lehrkräfte-Arbeitszeitverordnung). Regelmäßige Arbeitszeit der Beamtinnen und Beamten in RLP: durchschnittlich 40 Stunden je Woche (§ 2 Arbeitszeitverordnung), bei 30 Urlaubstagen. Ein offizielles Soll je Schulwoche gibt es nicht; der Wert hier ist eine Umrechnung.</p>
+      <p><b>Rechnung.</b> 2027 hat 254 Arbeitstage (Montag bis Freitag ohne Feiertage in RLP), minus 30 Urlaubstage ergibt 224 Tage zu 8 Stunden, also 1.792 Stunden bei Vollzeit. Das Schuljahr 2026/27 hat 194 Unterrichtstage, also 38,8 Schulwochen; zieht man die 6 beweglichen Ferientage ab, sind es 37,6. Bei Teilzeit wird das Jahressoll mit dem Beschäftigungsumfang verrechnet. Für spätere Schuljahre die Schulwochen anpassen.</p>
+      <p><b>Datenschutz.</b> Diese Seite sendet nichts ins Internet und lädt nichts nach. Alle Einträge bleiben im Speicher dieses Browsers. Auf dem iPhone die Seite über „Teilen → Zum Home-Bildschirm“ ablegen und von dort öffnen; Safari kann den Speicher normaler Webseiten nach längerer Nichtnutzung löschen.</p>
+      <p>Ohne Gewähr. Keine dienstliche Arbeitszeiterfassung.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var KEY="dienstzeit.v1";
+  var DEF={umfang:100,deputat:24,jahressoll:1792,schulwochen:38.8,bilanzStart:""};
+  var USTD_MIN=45;
+  var state={entries:[],running:null,settings:Object.assign({},DEF)};
+  var storageOk=true, editId=null;
+  var $=function(id){return document.getElementById(id)};
+  function pad(n){return String(n).padStart(2,"0")}
+  function hm(ms){var neg=ms<0;ms=Math.abs(ms);var m=Math.round(ms/60000);return (neg?"−":"")+Math.floor(m/60)+":"+pad(m%60)}
+  function hms(ms){var s=Math.max(0,Math.floor(ms/1000));return Math.floor(s/3600)+":"+pad(Math.floor(s/60)%60)+":"+pad(s%60)}
+  function dayKey(t){var d=new Date(t);return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+  function weekStart(t){var d=new Date(t);d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.getTime()}
+  function isoWeek(t){var d=new Date(t);d.setHours(0,0,0,0);d.setDate(d.getDate()+3-((d.getDay()+6)%7));var w1=new Date(d.getFullYear(),0,4);return 1+Math.round(((d-w1)/864e5-3+((w1.getDay()+6)%7))/7)}
+  function fmtDate(t){return new Date(t).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"})}
+  function fmtTime(t){return new Date(t).toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}
+  var MONTHS=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  function dur(e){return Math.max(0,e.end-e.start)}
+  function num(v){var n=parseFloat(String(v).replace(",","."));return isFinite(n)?n:null}
+  function rid(){return "e"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+  function jahresSoll(){return state.settings.jahressoll*state.settings.umfang/100}
+  function sollWoche(){return jahresSoll()/state.settings.schulwochen*3600000}
+  function teachMs(){return state.settings.deputat*USTD_MIN*60000}
+  function msg(id,t,kind){var m=$(id);m.textContent=t||"";m.className="msg "+(kind||"")}
+
+  // ---------- Speicher ----------
+  function load(){
+    try{
+      var raw=localStorage.getItem(KEY);
+      if(raw){var d=JSON.parse(raw);
+        state.entries=Array.isArray(d.entries)?d.entries.filter(function(e){return typeof e.start==="number"&&typeof e.end==="number"}):[];
+        state.running=d.running&&typeof d.running.start==="number"?{start:d.running.start}:null;
+        state.settings=Object.assign({},DEF,d.settings||{});
+      }
+    }catch(e){storageOk=false}
+  }
+  function save(){
+    try{localStorage.setItem(KEY,JSON.stringify(state));return true}
+    catch(e){storageOk=false;showBanner("Speichern nicht möglich. Der Browser blockiert den Speicher (zum Beispiel im privaten Modus). Öffne die Seite in einem normalen Fenster.");return false}
+  }
+  function showBanner(t){var b=$("banner");b.textContent=t||"";b.hidden=!t}
+  try{if(navigator.storage&&navigator.storage.persist) navigator.storage.persist().catch(function(){})}catch(e){}
+
+  // ---------- Reiter ----------
+  document.querySelectorAll(".tabs button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b?"true":"false")});
+    ["auswertung","eintraege","einstellungen"].forEach(function(p){$("p-"+p).hidden=p!==b.dataset.p});
+  })});
+
+  // ---------- Darstellung ----------
+  function all(now){return state.entries.concat(state.running?[{start:state.running.start,end:now}]:[])}
+  function renderClock(){
+    var now=Date.now(),r=state.running;
+    if(r){$("state").textContent="Läuft";$("time").textContent=hms(now-r.start);$("since").textContent="seit "+fmtTime(r.start)+" Uhr";$("toggle").textContent="Stopp";$("toggle").classList.add("stop")}
+    else{$("state").textContent="Gestoppt";$("time").textContent="0:00:00";$("since").textContent="";$("toggle").textContent="Start";$("toggle").classList.remove("stop")}
+    var a=all(now),tk=dayKey(now);
+    $("today").textContent=hm(a.filter(function(e){return dayKey(e.start)===tk}).reduce(function(s,e){return s+dur(e)},0));
+    var ws=weekStart(now),soll=sollWoche(),teach=teachMs();
+    var wk=a.filter(function(e){return weekStart(e.start)===ws}).reduce(function(s,e){return s+dur(e)},0);
+    $("weekTitle").textContent="KW "+isoWeek(now);
+    $("weekVal").textContent=hm(wk)+" h von "+hm(soll)+" h";
+    $("weekFill").style.width=Math.min(100,wk/soll*100)+"%";
+    $("weekMark").style.left=Math.min(100,teach/soll*100)+"%";
+    $("teachLbl").textContent=hm(teach)+" h Unterricht";
+  }
+  function renderStats(){
+    var now=Date.now(),a=all(now),soll=sollWoche();
+    var byWeek=new Map(),byMonth=new Map();
+    a.forEach(function(e){var k=weekStart(e.start);byWeek.set(k,(byWeek.get(k)||0)+dur(e));var d=new Date(e.start),m=d.getFullYear()*12+d.getMonth();byMonth.set(m,(byMonth.get(m)||0)+dur(e))});
+    var first=a.length?Math.min.apply(null,a.map(function(e){return e.start})):null;
+    var start=state.settings.bilanzStart?new Date(state.settings.bilanzStart+"T00:00:00").getTime():first;
+    if(start==null){["sAvgWork","sAvgCal","sTotal","sSaldo"].forEach(function(i){$(i).textContent="–"});$("sSaldo").className=""}
+    else{
+      var total=a.filter(function(e){return e.start>=start}).reduce(function(s,e){return s+dur(e)},0);
+      var ww=[];byWeek.forEach(function(v,k){if(k+7*864e5>start&&v>0) ww.push(v)});
+      var avgW=ww.length?ww.reduce(function(s,v){return s+v},0)/ww.length:0;
+      var calWeeks=Math.max(1,Math.round((weekStart(now)-weekStart(start))/(7*864e5))+1);
+      var days=Math.max(1,Math.floor((now-start)/864e5)+1);
+      var saldo=total-jahresSoll()*3600000*days/365;
+      $("sAvgWork").textContent=hm(avgW)+" h";$("sAvgCal").textContent=hm(total/calWeeks)+" h";$("sTotal").textContent=hm(total)+" h";
+      $("sSaldo").textContent=(saldo>=0?"+":"")+hm(saldo)+" h";$("sSaldo").className=saldo>=0?"pos":"neg";
+    }
+    var wkeys=Array.from(byWeek.keys()).sort(function(x,y){return y-x}).slice(0,12),wbox=$("weeks");wbox.textContent="";
+    if(!wkeys.length) wbox.innerHTML='<div class="empty">Noch keine Zeiten erfasst. Tippe oben auf Start oder trage unter „Einträge“ eine Zeit nach.</div>';
+    var scale=Math.max.apply(null,[soll].concat(wkeys.map(function(k){return byWeek.get(k)})));
+    wkeys.forEach(function(k){
+      var v=byWeek.get(k),r=document.createElement("div");r.className="row";
+      r.innerHTML='<span class="lbl"></span><div class="minibar"><div class="fill"></div><div class="mark"></div></div><span class="val"></span>';
+      r.children[0].textContent="KW "+isoWeek(k)+" · "+new Date(k).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit"});
+      r.querySelector(".fill").style.width=(v/scale*100)+"%";r.querySelector(".mark").style.left=(soll/scale*100)+"%";
+      r.children[2].textContent=hm(v);wbox.appendChild(r);
+    });
+    var mkeys=Array.from(byMonth.keys()).sort(function(x,y){return y-x}),mbox=$("months");mbox.textContent="";
+    if(!mkeys.length) mbox.innerHTML='<div class="empty">Monatswerte erscheinen nach dem ersten Eintrag.</div>';
+    var mmax=Math.max.apply(null,[1].concat(mkeys.map(function(k){return byMonth.get(k)})));
+    mkeys.forEach(function(k){
+      var v=byMonth.get(k),r=document.createElement("div");r.className="row";
+      r.innerHTML='<span class="lbl"></span><div class="minibar"><div class="fill"></div></div><span class="val"></span>';
+      r.children[0].textContent=MONTHS[k%12]+" "+Math.floor(k/12);r.querySelector(".fill").style.width=(v/mmax*100)+"%";r.children[2].textContent=hm(v);
+      mbox.appendChild(r);
+    });
+    var ebox=$("entries");ebox.textContent="";
+    var list=state.entries.slice().sort(function(x,y){return y.start-x.start}).slice(0,40);
+    if(!list.length) ebox.innerHTML='<div class="empty">Hier erscheinen deine Einträge. Du kannst sie antippen und korrigieren.</div>';
+    list.forEach(function(e){
+      var r=document.createElement("div");r.className="entry";
+      r.innerHTML='<div class="when"><span></span><small></small></div><button class="linkbtn" type="button">Bearbeiten</button>';
+      r.querySelector("span").textContent=fmtDate(e.start)+"  "+fmtTime(e.start)+"–"+fmtTime(e.end);
+      r.querySelector("small").textContent=hm(dur(e))+" h";
+      r.querySelector("button").addEventListener("click",function(){startEdit(e)});
+      ebox.appendChild(r);
+    });
+    renderCalc();
+  }
+  function renderCalc(){
+    var s=state.settings,js=jahresSoll(),sw=js/s.schulwochen*3600000;
+    var lines=[
+      ["Unterricht",String(s.deputat).replace(".",",")+" × 45 min = "+hm(teachMs())+" h"],
+      ["Jahressoll"+(s.umfang<100?" ("+String(s.umfang).replace(".",",")+" %)":""),Math.round(js).toLocaleString("de-DE")+" h"],
+      ["Ø Kalenderwoche",hm(40*s.umfang/100*3600000)+" h"],
+      ["Schulwochen",String(s.schulwochen).replace(".",",")],
+      ["Soll je Schulwoche",hm(sw)+" h"],
+      ["davon außerhalb des Unterrichts",hm(sw-teachMs())+" h"]
+    ];
+    var c=$("calc");c.textContent="";
+    lines.forEach(function(l){var d=document.createElement("div");d.innerHTML="<span></span><b></b>";d.children[0].textContent=l[0];d.children[1].textContent=l[1];c.appendChild(d)});
+  }
+  function fillSettings(){var s=state.settings;$("sUmfang").value=s.umfang;$("sDeputat").value=s.deputat;$("sJahr").value=s.jahressoll;$("sWochen").value=s.schulwochen;$("sStart").value=s.bilanzStart||""}
+  function renderAll(){renderClock();renderStats()}
+
+  // ---------- Stoppuhr ----------
+  $("toggle").addEventListener("click",function(){
+    load();
+    if(state.running){var s=state.running.start,e=Date.now();if(e-s>=60000) state.entries.push({id:rid(),start:s,end:e});state.running=null}
+    else state.running={start:Date.now()};
+    save();renderAll();
+  });
+
+  // ---------- Nachtragen ----------
+  function todayStr(){return dayKey(Date.now())}
+  $("fDate").value=todayStr();
+  function startEdit(e){
+    editId=e.id;$("formTitle").textContent="Eintrag bearbeiten";$("fDate").value=dayKey(e.start);
+    var f=new Date(e.start),t=new Date(e.end);$("fFrom").value=pad(f.getHours())+":"+pad(f.getMinutes());$("fTo").value=pad(t.getHours())+":"+pad(t.getMinutes());
+    $("fSave").textContent="Speichern";$("fCancel").hidden=false;$("fDelete").hidden=false;$("fDelete").textContent="Löschen";delete $("fDelete").dataset.armed;
+    msg("fMsg","");$("entryForm").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+  function resetForm(){editId=null;$("formTitle").textContent="Zeit nachtragen";$("fSave").textContent="Eintragen";$("fCancel").hidden=true;$("fDelete").hidden=true;$("fFrom").value="";$("fTo").value="";$("fDate").value=todayStr()}
+  $("fCancel").addEventListener("click",function(){resetForm();msg("fMsg","")});
+  $("fDelete").addEventListener("click",function(){
+    var b=$("fDelete");if(!b.dataset.armed){b.dataset.armed="1";b.textContent="Wirklich löschen?";return}
+    load();state.entries=state.entries.filter(function(x){return x.id!==editId});
+    if(save()){resetForm();msg("fMsg","Eintrag gelöscht.","ok");renderAll()}
+  });
+  $("entryForm").addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var d=$("fDate").value,f=$("fFrom").value,t=$("fTo").value;
+    if(!d||!f||!t){msg("fMsg","Bitte Datum, Beginn und Ende angeben.","err");return}
+    var s=new Date(d+"T"+f+":00").getTime(),e=new Date(d+"T"+t+":00").getTime();
+    if(e<=s){msg("fMsg","Das Ende liegt vor dem Beginn. Für Zeiten über Mitternacht bitte zwei Einträge anlegen.","err");return}
+    load();
+    var clash=state.entries.find(function(x){return x.id!==editId&&x.start<e&&x.end>s});
+    var was=!!editId;
+    if(was){var x=state.entries.find(function(y){return y.id===editId});if(x){x.start=s;x.end=e}}
+    else state.entries.push({id:rid(),start:s,end:e});
+    if(!save()) return;
+    resetForm();renderAll();
+    msg("fMsg",(was?"Gespeichert: ":"Eingetragen: ")+hm(e-s)+" h"+(clash?". Achtung: überschneidet sich mit "+fmtTime(clash.start)+"–"+fmtTime(clash.end)+".":"."),clash?"err":"ok");
+  });
+
+  // ---------- Einstellungen ----------
+  $("setForm").addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var u=num($("sUmfang").value),dp=num($("sDeputat").value),j=num($("sJahr").value),w=num($("sWochen").value);
+    if(!u||u>100||dp==null||!j||!w){msg("sMsg","Bitte alle Zahlen ausfüllen. Der Beschäftigungsumfang liegt zwischen 1 und 100 %.","err");return}
+    load();state.settings={umfang:u,deputat:dp,jahressoll:j,schulwochen:w,bilanzStart:$("sStart").value||""};
+    if(save()){msg("sMsg","Gespeichert.","ok");renderAll()}
+  });
+  $("sReset").addEventListener("click",function(){
+    var keep=state.settings.bilanzStart;state.settings=Object.assign({},DEF,{bilanzStart:keep});fillSettings();
+    if(save()){msg("sMsg","RLP-Standard für Vollzeit an der BBS gesetzt.","ok");renderAll()}
+  });
+
+  // ---------- Sichern ----------
+  $("exportBtn").addEventListener("click",function(){
+    load();
+    var data=JSON.stringify({app:"dienstzeit",version:1,exportiert:new Date().toISOString(),entries:state.entries,running:state.running,settings:state.settings},null,1);
+    var blob=new Blob([data],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+    a.href=url;a.download="dienstzeit-sicherung-"+todayStr()+".json";document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(url);a.remove()},2000);
+    msg("bMsg","Sicherung mit "+state.entries.length+" Einträgen erstellt.","ok");
+  });
+  $("importBtn").addEventListener("click",function(){var b=$("importBtn");if(!b.dataset.armed){b.dataset.armed="1";b.textContent="Ersetzt alle Einträge. Datei wählen";return}delete b.dataset.armed;b.textContent="Sicherung laden";$("importFile").click()});
+  $("importFile").addEventListener("change",function(){
+    var f=this.files&&this.files[0];if(!f) return;
+    var rd=new FileReader();
+    rd.onload=function(){
+      try{
+        var d=JSON.parse(rd.result);
+        if(d.app!=="dienstzeit"||!Array.isArray(d.entries)) throw new Error("x");
+        state.entries=d.entries.filter(function(e){return typeof e.start==="number"&&typeof e.end==="number"}).map(function(e){return {id:e.id||rid(),start:e.start,end:e.end}});
+        state.running=d.running&&typeof d.running.start==="number"?{start:d.running.start}:null;
+        state.settings=Object.assign({},DEF,d.settings||{});
+        if(save()){fillSettings();renderAll();msg("bMsg","Sicherung geladen: "+state.entries.length+" Einträge.","ok")}
+      }catch(e){msg("bMsg","Die Datei ist keine gültige Dienstzeit-Sicherung.","err")}
+    };
+    rd.readAsText(f);this.value="";
+  });
+
+  // ---------- Start ----------
+  load();
+  if(!storageOk) showBanner("Dieser Browser erlaubt keinen Speicher (zum Beispiel im privaten Modus). Zeiten gehen beim Schließen verloren.");
+  fillSettings();renderAll();
+  setInterval(renderClock,1000);
+  setInterval(function(){if(state.running) renderStats()},60000);
+  window.addEventListener("storage",function(e){if(e.key===KEY){load();fillSettings();renderAll()}});
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"){load();renderAll()}});
+})();
+</script>
+</body>
+</html>
